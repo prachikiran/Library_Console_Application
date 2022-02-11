@@ -66,7 +66,7 @@ public class Library {
 
 	}
 
-	public void showLibrary() throws ClassNotFoundException, SQLException {
+	public void display() throws ClassNotFoundException, SQLException {
 		try {
 			Connection con = DriverManager.getConnection(url, user, password);
 			Statement st = con.createStatement();

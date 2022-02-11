@@ -5,12 +5,20 @@ public class BookStack {
 	private String title;
 	private String author;
 	private String publisher;
-	private int copyright;
 	private int edition;
-	private String ISBN;
+	private double price;
 	private boolean availability;
 
-	public BookStack() {
+	public BookStack(int bookID, String subject, String title, String author, String publisher, int edition, double price, boolean availability) {
+		
+		this.bookID = bookID;
+		this.subject = subject;
+		this.title = title;
+		this.author = author;
+		this.publisher = publisher;
+		this.edition = edition;
+		this.price = price;
+		this.availability = availability;
 	}
 
 	public int getBookID() {
@@ -33,19 +41,19 @@ public class BookStack {
 		return publisher;
 	}
 
-	public int getCopyright() {
-		return copyright;
-	}
-
 	public int getEdition() {
 		return edition;
 	}
 	
-	public String getISBN() {
-		return ISBN;
+	public double getPrice() {
+		return price;
 	}
 
 	public boolean getAvailability() {
 		return availability;
+	}
+	
+	public String printDetails() {
+		return "Book ID: " + bookID + "Subject: " + subject + "Title: " + title + "Author: " + author + "Publisher: " + publisher + "Edition: " + edition + "Price: " + price;
 	}
 }
