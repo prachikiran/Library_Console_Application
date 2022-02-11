@@ -109,14 +109,14 @@ public class Library {
 
 	public void returnBook() {
 		System.out.print("Enter your id:");
-		int cust_id = sc.nextInt();
+		int cust_id = s.nextInt();
 		System.out.print("Enter book id:");
-		int id = sc.nextInt();
-		sc.nextLine();
+		int id = s.nextInt();
+		s.nextLine();
 		System.out.print("\nEnter your Name -  ");
-		String name = sc.nextLine();
+		String name = s.nextLine();
 		System.out.print("\nEnter Book Name -  ");
-		String title = sc.nextLine();
+		String title = s.nextLine();
 
 		try {
 			Connection con = DriverManager.getConnection(url, user, password);
