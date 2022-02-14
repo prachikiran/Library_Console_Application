@@ -10,14 +10,14 @@ public class Main {
 		Class.forName("com.mysql.cj.jdbc.Driver");
 		int choice;
 		do {
-			System.out.println("          HOME         ");
-			System.out.println("1.View Library");
+			System.out.println("     HOME     ");
+			System.out.println("1.View Library    ");
 			System.out.println("2.Add Book");
 			System.out.println("3.Remove Book");
 			System.out.println("4.Issue");
 			System.out.println("5.Return");
 			System.out.println("0.EXIT");
-			System.out.println("Enter your choice: ");
+			System.out.print("Enter your choice: ");
 			choice = s.nextInt();
 			System.out.println("");
 
@@ -38,10 +38,10 @@ public class Main {
 				library.returnBook();
 				break;
 			case 0:
-				System.out.println("         Thank you! Visit Again        ");
+				System.out.println("         Thank you! Visit Again..        ");
 				break;
 			default:
-				System.out.println("Your choice is Invalid");
+				System.out.println("Invalid Input! Please select from listed choices below.\n");
 				break;
 			}
 		} while (choice != 0);

@@ -5,11 +5,11 @@ public class BookStack {
 	private String title;
 	private String author;
 	private String publisher;
-	private int edition;
+	private String edition;
 	private double price;
 	private boolean availability;
 
-	public BookStack(int bookID, String subject, String title, String author, String publisher, int edition, double price, boolean availability) {
+	public BookStack(int bookID, String subject, String title, String author, String publisher, String edition, double price, boolean availability) {
 		
 		this.bookID = bookID;
 		this.subject = subject;
@@ -41,7 +41,7 @@ public class BookStack {
 		return publisher;
 	}
 
-	public int getEdition() {
+	public String getEdition() {
 		return edition;
 	}
 	
