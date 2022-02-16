@@ -17,9 +17,8 @@ public class Main {
 			System.out.println("4.Issue");
 			System.out.println("5.Return");
 			System.out.println("0.EXIT");
-			System.out.print("Enter your choice: ");
+			System.out.print("\nEnter your choice: ");
 			choice = s.nextInt();
-			System.out.println("");
 
 			switch (choice) {
 			case 1:

@@ -26,12 +26,12 @@ public class Library {
 		String edition = s.nextLine();
 		System.out.print("Price: ");
 		double price = s.nextInt();
-		System.out.print("Availability: ");
-		boolean availability = s.hasNext();
+		System.out.print("Quantity: ");
+		int quantity = s.nextInt();
 
 		try {
 			Connection conn = DriverManager.getConnection(url, username, password);
-			String query = "INSERT INTO librarydatabase.library_operation (bookID,subject,title,author,publisher,edition,price,availability) VALUES (?,?,?,?,?,?,?,?);";
+			String query = "INSERT INTO librarydatabase.library_operation (bookID,subject,title,author,publisher,edition,price,quantity) VALUES (?,?,?,?,?,?,?,?);";
 			PreparedStatement pS = conn.prepareStatement(query);
 			pS.setInt(1, bookID);
 			pS.setString(2, subject);
@@ -40,7 +40,7 @@ public class Library {
 			pS.setString(5, publisher);
 			pS.setString(6, edition);
 			pS.setDouble(7, price);
-			pS.setBoolean(8, availability);
+			pS.setInt(8, quantity);
 			pS.execute();
 			System.out.println("Inserted!");
 		} catch (Exception e) {
@@ -49,7 +49,7 @@ public class Library {
 	}
 
 	public void removeBook() {
-		System.out.print("Enter the book ID:  ");
+		System.out.print("Enter Book ID:  ");
 		int bookID = s.nextInt();
 		try {
 			Connection conn = DriverManager.getConnection(url, username, password);
@@ -73,9 +73,9 @@ public class Library {
 			while (rs.next()) {
 				System.out.println("ID= " + rs.getInt("bookID") + "  Title= "
 						+ rs.getString("title") + "  Author= " + rs.getString("author")
-						+ "  Publisher= " + rs.getInt("publisher") + "  Edition= "
-						+ rs.getInt("edition") + "  MRP= " + rs.getString("price")
-						+ "  Availability= " + rs.getInt("availability"));
+						+ "Publisher= " + rs.getInt("publisher") + "  Edition= "
+						+ rs.getInt("edition") + "  MRP= " + rs.getString("price") + "  Quantity= "
+						+ rs.getInt("quantity"));
 				System.out.println();
 			}
 
@@ -99,7 +99,7 @@ public class Library {
 
 		try {
 			Connection conn = DriverManager.getConnection(url, username, password);
-			String query = "INSERT INTO librarydatabase.library_operation (bookID,subject,title,author,publisher,edition,price,availability) VALUES (?,?,?,?,?,?,?,?);";
+			String query = "INSERT INTO librarydatabase.library_operation (bookID,subject,title,author,publisher,edition,price,quantity) VALUES (?,?,?,?,?,?,?,?);";
 			PreparedStatement pS = conn.prepareStatement(query);
 			pS.setInt(1, custID);
 			pS.setString(2, cust_name);
@@ -130,7 +130,7 @@ public class Library {
 
 		try {
 			Connection conn = DriverManager.getConnection(url, username, password);
-			String query = "INSERT INTO librarydatabase.library_operation (bookID,subject,title,author,publisher,edition,price,availability) VALUES (?,?,?,?,?,?,?,?);";
+			String query = "INSERT INTO librarydatabase.library_operation (bookID,subject,title,author,publisher,edition,price,quantity) VALUES (?,?,?,?,?,?,?,?);";
 			PreparedStatement pS = conn.prepareStatement(query);
 			pS.setInt(1, custID);
 			pS.setString(2, cust_name);

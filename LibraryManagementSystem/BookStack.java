@@ -7,9 +7,9 @@ public class BookStack {
 	private String publisher;
 	private String edition;
 	private double price;
-	private boolean availability;
+	private int quantity;
 
-	public BookStack(int bookID, String subject, String title, String author, String publisher, String edition, double price, boolean availability) {
+	public BookStack(int bookID, String subject, String title, String author, String publisher, String edition, double price, int quantity) {
 		
 		this.bookID = bookID;
 		this.subject = subject;
@@ -18,7 +18,7 @@ public class BookStack {
 		this.publisher = publisher;
 		this.edition = edition;
 		this.price = price;
-		this.availability = availability;
+		this.quantity = quantity;
 	}
 
 	public int getBookID() {
@@ -49,11 +49,11 @@ public class BookStack {
 		return price;
 	}
 
-	public boolean getAvailability() {
-		return availability;
+	public int getQuantity() {
+		return quantity;
 	}
 	
 	public String printDetails() {
-		return "Book ID: " + bookID + "Subject: " + subject + "Title: " + title + "Author: " + author + "Publisher: " + publisher + "Edition: " + edition + "Price: " + price;
+		return "Book ID: " + bookID + "Subject: " + subject + "Title: " + title + "Author: " + author + "Publisher: " + publisher + "Edition: " + edition + "Price: " + price + "Quantity: " + quantity;
 	}
 }
