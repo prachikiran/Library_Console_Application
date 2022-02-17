@@ -4,10 +4,9 @@ import java.sql.*;
 public class Library {
 
 	Scanner s = new Scanner(System.in);
-	ArrayList<BookStack> bookList = new ArrayList<>();
 	public String username = "root";
 	public String password = "root@123";
-	public String url = "jdbc:mysql://localhost:3306/libraryDatabase";
+	public String url = "jdbc:mysql://localhost:3306/librarydatabase";
 
 	public void addBook() {
 
@@ -53,7 +52,7 @@ public class Library {
 		int bookID = s.nextInt();
 		try {
 			Connection conn = DriverManager.getConnection(url, username, password);
-			String sql = "DELETE from libraryDatabase.library_operation where bookID = (?);";
+			String sql = "DELETE from librarydatabase.library_operation where bookID = (?);";
 			PreparedStatement pS = conn.prepareStatement(sql);
 			pS.setInt(1, bookID);
 			pS.execute();
@@ -68,14 +67,25 @@ public class Library {
 		try {
 			Connection conn = DriverManager.getConnection(url, username, password);
 			Statement st = conn.createStatement();
-			String query = "SELECT * FROM libraryDatabase.library_operation";
+			String query = "SELECT * FROM librarydatabase.library_operation;";
 			ResultSet rs = st.executeQuery(query);
 			while (rs.next()) {
-				System.out.println("ID= " + rs.getInt("bookID") + "  Title= "
-						+ rs.getString("title") + "  Author= " + rs.getString("author")
-						+ "Publisher= " + rs.getInt("publisher") + "  Edition= "
-						+ rs.getInt("edition") + "  MRP= " + rs.getString("price") + "  Quantity= "
-						+ rs.getInt("quantity"));
+				int bookID = rs.getInt("bookID");
+				System.out.println("Book ID = " + bookID);
+				String subject = rs.getString("subject");
+				System.out.println("SUbject = " + subject);
+				String title = rs.getString("title");
+				System.out.println("Title= " + title);
+				String author = rs.getString("author");
+				System.out.println("Author = " + author);
+				String publisher = rs.getString("publisher");
+				System.out.println("Publisher= " + publisher);
+				String edition = rs.getString("edition");
+				System.out.println("Edition = " + edition);
+				double cost = rs.getDouble("price");
+				System.out.println("MRP = " + cost);
+				int quantity = rs.getInt("quantity");
+				System.out.println("Quantity = " + quantity);
 				System.out.println();
 			}
 
@@ -85,62 +95,47 @@ public class Library {
 	}
 
 	public void issueBook() {
-		System.out.println("Enter Your id:");
-		int custID = s.nextInt();
-		System.out.println("Enter your Name:  ");
-		String cust_name = s.nextLine();
-		System.out.print("Enter book id:");
-		int bookID = s.nextInt();
-		System.out.print("Enter Issued Date:");
-		String issueDate = s.nextLine();
-		System.out.print("Enter Expiry Date:");
-		String expiryDate = s.nextLine();
+
+		System.out.print("Enter book ID: ");
+		int book_ID = s.nextInt();
+		System.out.print("Enter Issue Date: ");
 		s.nextLine();
+		String issueDate = s.nextLine();
+		System.out.print("Enter Expiry Date: ");
+		String expiryDate = s.nextLine();
 
 		try {
 			Connection conn = DriverManager.getConnection(url, username, password);
-			String query = "INSERT INTO librarydatabase.library_operation (bookID,subject,title,author,publisher,edition,price,quantity) VALUES (?,?,?,?,?,?,?,?);";
-			PreparedStatement pS = conn.prepareStatement(query);
-			pS.setInt(1, custID);
-			pS.setString(2, cust_name);
-			pS.setInt(3, bookID);
-			pS.setString(4, issueDate);
-			pS.setString(5, expiryDate);
-			pS.execute();
-			System.out.println("You have successfully issued the Book!");
-		} catch (Exception e) {
+			Statement st = conn.createStatement();
+			String query = "SELECT bookID FROM librarydatabase.library_operation;";
+			ResultSet rs = st.executeQuery(query);
+			rs.next();
+			System.out.println("You have successfully issued the Book #" + book_ID + "!");
+			}
+			catch (Exception e) {
 			System.out.println("Connection failure");
 		}
 	}
-
 	public void returnBook() {
-		System.out.print("Enter your id:");
-		int custID = s.nextInt();
-		System.out.print("\nEnter your Name: ");
-		String cust_name = s.nextLine();
-		System.out.print("Enter book ID:");
-		int bookID = s.nextInt();
-		System.out.print("Enter Issued Date:");
-		String issueDate = s.nextLine();
-		System.out.print("Enter Expiry Date:");
-		String dueDate = s.nextLine();
-		System.out.print("Enter Return Date:");
-		String returnDate = s.nextLine();
+		System.out.print("Enter book ID: ");
+		int book_ID = s.nextInt();
+		System.out.print("Enter Issue Date: ");
 		s.nextLine();
+		String issueDate = s.nextLine();
+		System.out.print("Enter Expiry Date: ");
+		String expiryDate = s.nextLine();
+		System.out.print("Enter Return Date: ");
+		String returnDate = s.nextLine();
 
 		try {
 			Connection conn = DriverManager.getConnection(url, username, password);
-			String query = "INSERT INTO librarydatabase.library_operation (bookID,subject,title,author,publisher,edition,price,quantity) VALUES (?,?,?,?,?,?,?,?);";
-			PreparedStatement pS = conn.prepareStatement(query);
-			pS.setInt(1, custID);
-			pS.setString(2, cust_name);
-			pS.setInt(3, bookID);
-			pS.setString(4, issueDate);
-			pS.setString(5, dueDate);
-			pS.setString(6, returnDate);
-			pS.execute();
-			System.out.println("Book returned Successfully!");
-		} catch (Exception e) {
+			Statement st = conn.createStatement();
+			String query = "SELECT bookID FROM librarydatabase.library_operation;";
+			ResultSet rs = st.executeQuery(query);
+			rs.next();
+			System.out.println("Book #" + book_ID + " returned successfully on "+ returnDate + "!");
+			}
+			catch (Exception e) {
 			System.out.println("Connection failure");
 		}
 	}
