@@ -1,59 +1,62 @@
 public class BookStack {
 
-	private int bookID;
-	private String subject;
-	private String title;
-	private String author;
-	private String publisher;
-	private String edition;
-	private double price;
-	private int quantity;
+    private int bookID;
+    private String subject;
+    private String title;
+    private String author;
+    private String publisher;
+    private String edition;
+    private double price;
+    private int quantity;
 
-	public BookStack(int bookID, String subject, String title, String author, String publisher, String edition, double price, int quantity) {
-		
-		this.bookID = bookID;
-		this.subject = subject;
-		this.title = title;
-		this.author = author;
-		this.publisher = publisher;
-		this.edition = edition;
-		this.price = price;
-		this.quantity = quantity;
-	}
+    public BookStack(int bookID, String subject, String title, String author, String publisher,
+            String edition, double price, int quantity) {
 
-	public int getBookID() {
-		return bookID;
-	}
+        this.bookID = bookID;
+        this.subject = subject;
+        this.title = title;
+        this.author = author;
+        this.publisher = publisher;
+        this.edition = edition;
+        this.price = price;
+        this.quantity = quantity;
+    }
 
-	public String getSubject() {
-		return subject;
-	}
+    public int getBookID() {
+        return bookID;
+    }
 
-	public String getTitle() {
-		return title;
-	}
+    public String getSubject() {
+        return subject;
+    }
 
-	public String getAuthor() {
-		return author;
-	}
+    public String getTitle() {
+        return title;
+    }
 
-	public String getPublisher() {
-		return publisher;
-	}
+    public String getAuthor() {
+        return author;
+    }
 
-	public String getEdition() {
-		return edition;
-	}
-	
-	public double getPrice() {
-		return price;
-	}
+    public String getPublisher() {
+        return publisher;
+    }
 
-	public int getQuantity() {
-		return quantity;
-	}
-	
-	public String printDetails() {
-		return "Book ID: " + bookID + "Subject: " + subject + "Title: " + title + "Author: " + author + "Publisher: " + publisher + "Edition: " + edition + "Price: " + price + "Quantity: " + quantity;
-	}
+    public String getEdition() {
+        return edition;
+    }
+
+    public double getPrice() {
+        return price;
+    }
+
+    public int getQuantity() {
+        return quantity;
+    }
+
+    public String printDetails() {
+        return "Book ID: " + bookID + "Subject: " + subject + "Title: " + title + "Author: "
+                + author + "Publisher: " + publisher + "Edition: " + edition + "Price: " + price
+                + "Quantity: " + quantity;
+    }
 }
